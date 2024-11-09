@@ -5,15 +5,6 @@
 }
 
 /* hide stuff */
-#back-button,
-#forward-button,
-#userContext-icons,
-#translations-button-icon,
-#tracking-protection-icon-container,
-#star-button-box,
-.urlbar-page-action {
-  display: none;
-}
 
 /* 
    hide elements of the identity box when:

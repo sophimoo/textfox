@@ -11,15 +11,6 @@ _a port of spotify tui to firefox_
 
 ## Preview
 
-![image](https://github.com/adriankarlen/textfox/blob/main/misc/vertical-tabs.png)
-
-![image](https://github.com/adriankarlen/textfox/blob/main/misc/horizontal-tabs.png)
-
-> [!NOTE]
-> The color scheme used in the pictures is [Rosé Pine Moon](https://github.com/rose-pine/firefox).
-> `textfox` tries to not hard code any colors, [Firefox Color extension](https://addons.mozilla.org/en-US/firefox/addon/firefox-color/) is the
-> recommended approach to coloring Firefox with `textfox`.
-
 ## Prequisites
 
 - Sidebery (optional)
@@ -32,103 +23,6 @@ _a port of spotify tui to firefox_
 4. Open the profile's root directory
 5. Move the files chrome directory and user.js there
 6. Restart firefox
-
-> [!IMPORTANT]
-> textfox now supports horizontal tabs, to enable them change the
-> `--display-horizontal-tabs` variable in `variables.css` to `block`.
-
-> [!NOTE]
-> If you don't want to use the provided user.js, please read through it and
-> apply the settings in `about:config` manually. These are needed for the css to
-> work.
-
-### Nix
-This repo includes a Nix flake that exposes a home-manager module that installs textfox and sidebery.
-
-To enable the module, add the repo as a flake input, import the module, and enable textfox
-
-If your home-manager module is defined within your `nixosConfigurations`:
-```nix
-# flake.nix
-
-{
-
-    inputs = {
-       # ---Snip---
-       home-manager = {
-         url = "github:nix-community/home-manager";
-         inputs.nixpkgs.follows = "nixpkgs";
-       };
-
-       textfox.url = "github:adriankarlen/textfox";
-       # ---Snip---
-    }
-
-    outputs = {nixpkgs, home-manager, ...} @ inputs: {
-        nixosConfigurations.HOSTNAME = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-          home-manager.nixosModules.home-manager
-            {
-             # Must pass in inputs so we can access the module
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-              };
-            }
-         ];
-      };
-   } 
-}
-```
-```nix
-# home.nix
-
-imports = [ inputs.textfox.homeManagerModules.default ];
-
-textfox = {
-    enable = true;
-    profile = "firefox profile name here";
-};
-
-```
-
-
-If you use `home-manager.lib.homeManagerConfiguration`
-```nix
-# flake.nix
-
-    inputs = {
-       # ---Snip---
-       home-manager = {
-         url = "github:nix-community/home-manager";
-         inputs.nixpkgs.follows = "nixpkgs";
-       };
-
-       textfox.url = "github:adriankarlen/textfox";
-       # ---Snip---
-    }
-
-    outputs = {nixpkgs, home-manager, textfox ...}: {
-        homeConfigurations."user@hostname" = home-manager.lib.homeManagerConfiguration {
-         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-
-         modules = [
-            textfox.homeManagerModules.default
-        # ...
-        ];
-     };
-  };
-}
-```
-```nix
-# home.nix
-
-textfox = {
-    enable = true;
-    profile = "firefox profile name here";
-};
-
-```
 
 ### Sidebery
 
@@ -168,3 +62,4 @@ your liking without any fear of breaking stuff.
 
 изз - starting working on a similar project in the glazewm discord, prompted me
 to get started on the work.
+
