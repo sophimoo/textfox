@@ -58,6 +58,8 @@ your liking without any fear of breaking stuff.
 
 ### Acknowledgements
 
+[original textfox github repo](https://github.com/adriankarlen/textfox)
+
 [Naezr](https://github.com/Naezr) - Icon logic and some sideberry logic.
 
 изз - starting working on a similar project in the glazewm discord, prompted me
