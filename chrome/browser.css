@@ -1,3 +1,11 @@
+.browserContainer {
+  background: var(--tf-bg);
+}
+
+browser {
+  border-radius: var(--tf-rounding);
+}
+
 #tabbrowser-tabbox {
   margin: 8px !important;
   border: var(--border-width) solid var(--tf-border);
@@ -5,8 +13,10 @@
   padding: 8px !important;
   transition: border-color var(--tf-border-transition);
   &:hover {
-    color: var(--tf-accent);
     border-color: var(--tf-accent) !important;
+    &::before {
+      color: var(--tf-accent);
+    }
   }
   &::before {
     content: "main";

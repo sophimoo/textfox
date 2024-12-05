@@ -4,7 +4,11 @@
   --urlbar-container-height: 32px !important;
 }
 
-/* hide stuff */
+/* configurable navigation buttons */
+#back-button,
+#forward-button {
+  display: var(--tf-display-nav-buttons);
+}
 
 /* 
    hide elements of the identity box when:
