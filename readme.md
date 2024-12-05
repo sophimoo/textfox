@@ -17,6 +17,8 @@ _a port of spotify tui to firefox_
 
 ## Installation
 
+### Manual
+
 1. Download the files
 2. Go to `about:profiles`
 3. Find your profile -- ( _„This is the profile in use and it cannot be deleted.”_ )
@@ -53,10 +55,45 @@ the same settings are used (these can be set in about:config).
 | `shyfox.enable.context.menu.icons` | Many context menu items get icons | No icons in context menus |
 
 ### CSS configurations
-Inside `variables.css` reused variables are stored at the top, tweak those to
-your liking without any fear of breaking stuff.
+The theme ships with a `defaults.css`, this file can be overriden by creating a
+`config.css` inside the chrome directory. For instance if I'd want to change the
+border radius it would look like this:
 
-### Acknowledgements
+```css
+/* path: chrome/config.css */
+:root {
+  --tf-rounding: 4px;
+}
+```
+
+#### Defaults
+```css
+:root {
+  --tf-font-family: "SF Mono", Consolas, monospace; /* Font family of config */
+  --tf-font-size: 14px; /* Font size of config */
+  --tf-accent: var(--toolbarbutton-icon-fill); /* Accent color used, eg: color when hovering a container  */
+  --tf-bg: var(--lwt-accent-color, -moz-dialog); /* Background color of all elements, tab colors derive from this */
+  --tf-border: var(--arrowpanel-border-color, --toolbar-field-background-color); /* Border color when not hovered */
+  --tf-border-transition: 0.2s ease; /* Smooth color transitions for borders */
+  --tf-border-width: 2px; /* Width of borders */
+  --tf-rounding: 0px; /* Border radius used through out the config */
+  --tf-margin: 0.8rem; /* Margin used between elements in sidebery */
+  --tf-display-horizontal-tabs: none; /* If horizontal tabs should be shown, none = hidden, block = shown */
+  --tf-display-nav-buttons: none; /* If the navigation buttons (back, forward) should be shown, none = hidden, block = shown */
+  --tf-newtab-logo: "   __            __  ____          \A   / /____  _  __/ /_/ __/___  _  __\A  / __/ _ \\| |/_/ __/ /_/ __ \\| |/_/\A / /_/  __/>  </ /_/ __/ /_/ />  <  \A \\__/\\___/_/|_|\\__/_/  \\____/_/|_|  ";
+}
+```
+
+### Changing the new tab logo
+
+The new tab logo can be any string you want, to create a string with line breaks
+add a `\A` at every line break, also make sure to break any backslashes, eg. if
+you want a `\`, you need to write `\\`. I used [this tool](https://www.patorjk.com/software/taag/#p=display&f=Slant&t=textfox)
+to create the current logo.
+
+Wanna hide the logo? Simply pass an empty string as the logo.
+
+## Acknowledgements
 
 [original textfox github repo](https://github.com/adriankarlen/textfox)
 

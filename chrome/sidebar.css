@@ -8,8 +8,8 @@
   }
   &::before {
     content: "tabs";
-    background-color: var(--tf-bg);
     color: var(--lwt-text-color);
+    background-color: var(--tf-bg);
     position: absolute;
     margin: -12px 12px;
     padding: 0 4px;
