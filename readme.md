@@ -26,7 +26,7 @@ _a port of spotify tui to firefox_
 5. Move the files chrome directory and user.js there
 6. Restart firefox
 
-### Sidebery
+## Sidebery
 
 Sidebery css is being set from within `content/sidebery` (applied as content to
 the sidebery url). If you have any prexisting css set from within the sidebery
